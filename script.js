@@ -13,7 +13,7 @@ const channels = [
   {name:"HUM TV", 
       category:"Drama", 
       logo:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQRqNL_yQDDJ5X0Yx4vR9VA_lisDOtijReMnIpH6PsAqMtFFBaZAEcUp_Y&s=10", 
-      stream:"https://cdn05khi.tamashaweb.com:8087/YlUHeDQb7a/HUMTv-abr/playlist.m3u8"},
+      stream:"https://cdn12isb.tamashaweb.com:8087/YlUHeDQb7a/humTV-abr/playlist.m3u8"},
 
   {name:"Geo News", 
       category:"News", 
