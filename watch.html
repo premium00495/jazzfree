@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PakStream Player</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="player-container">
+  <div class="player-header" id="channelName">PakStream Player</div>
+
+  <video id="videoPlayer" controls autoplay>
+    <source id="videoSource" src="" type="application/x-mpegURL">
+    Your browser does not support video.
+  </video>
+
+  <div class="channel-grid" id="channelGrid"></div>
+
+  <button class="back-btn" onclick="goBack()">Back to Home</button>
+</div>
+
+<script src="script.js"></script>
+<script>
+// ---------- References ----------
+const video = document.getElementById('videoPlayer');
+const source = document.getElementById('videoSource');
+const grid = document.getElementById('channelGrid');
+const header = document.getElementById('channelName');
+
+// ---------- Get clicked channel from URL ----------
+const urlParams = new URLSearchParams(window.location.search);
+const channelName = urlParams.get('name') || channels[0].name;
+
+// ---------- Find clicked channel ----------
+let currentChannel = channels.find(c => c.name === channelName) || channels[0];
+
+// ---------- Function to play channel ----------
+function playChannel(channel){
+  currentChannel = channel;
+  source.src = channel.stream;
+  video.load();
+  video.play();
+  header.textContent = channel.name;
+  renderCategoryChannels();
+}
+
+// ---------- Render same category channels ----------
+function renderCategoryChannels(){
+  grid.innerHTML = "";
+  const catChannels = channels.filter(c => c.category === currentChannel.category);
+  catChannels.forEach(c => {
+    if(c.name === currentChannel.name) return;
+    const card = document.createElement('div');
+    card.className = "card";
+    card.innerHTML = `<img src="${c.logo || 'https://via.placeholder.com/150x100?text='+c.name.replace(/\s+/g,'+')}" alt="${c.name}"><p>${c.name}</p>`;
+    card.addEventListener('click', () => playChannel(c));
+    grid.appendChild(card);
+  });
+}
+
+// ---------- Back button ----------
+function goBack(){
+  window.location.href = "index.html";
+}
+
+// ---------- Auto play clicked channel ----------
+playChannel(currentChannel);
+</script>
+
+</body>
+</html>
