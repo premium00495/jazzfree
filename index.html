@@ -63,6 +63,12 @@ channels.forEach(c=>{
   `;
   gridDiv.appendChild(card);
 });
+
+if (window.history.replaceState) {
+    const cleanUrl = window.location.protocol + "//" + window.location.host + window.location.pathname;
+    window.history.replaceState({}, document.title, cleanUrl);
+}
+  
 </script>
 
 </body>
