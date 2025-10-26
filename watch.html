@@ -60,6 +60,12 @@ function renderCategoryChannels(){
   });
 }
 
+// URL ko fully clean kar de without reload
+if (window.history.replaceState) {
+    const cleanUrl = window.location.protocol + "//" + window.location.host + "/";
+    window.history.replaceState({}, document.title, cleanUrl);
+}
+  
 // ---------- Back button ----------
 function goBack(){
   window.location.href = "index.html";
