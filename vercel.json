@@ -1,6 +1,11 @@
 {
   "rewrites": [
-    { "source": "/", "destination": "/index.html" },
-    { "source": "/watch", "destination": "/watch.html" }
+    { "source": "/", "destination": "/index02.html" }, 
+    { "source": "/dashboard", "destination": "/api/dashboard" }
+  ],
+  "redirects": [
+    { "source": "/index.html", "destination": "/", "permanent": false },
+    { "source": "/index02.html", "destination": "/", "permanent": false },
+    { "source": "/watch.html", "destination": "/dashboard", "permanent": false }
   ]
 }
