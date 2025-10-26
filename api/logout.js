@@ -1,11 +1,5 @@
-// api/logout.js
-export default function handler(req, res) {
-  // Clear cookie
-  res.setHeader(
-    'Set-Cookie',
-    'access=; Path=/; HttpOnly; Secure; Max-Age=0'
-  );
-  // Redirect to security system
-  res.writeHead(302, { Location: '/' });
+export default function handler(req,res){
+  res.setHeader('Set-Cookie','access=; Path=/; HttpOnly; Secure; Max-Age=0');
+  res.writeHead(302,{Location:'/'});
   return res.end();
 }
